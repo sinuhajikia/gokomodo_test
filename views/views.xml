@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <!-- add field business model in sale order -->
+        <record id="business_model_form" model="ir.ui.view">
+          <field name="name">business.model.inherit</field>
+          <field name="model">sale.order</field>
+          <field name="inherit_id" ref="sale.view_order_form"/>
+          <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="business_model"/>
+            </xpath>
+          </field>
+        </record>
+
+        <!-- add business model in tree view quotation -->
+        <record id="view_sale_order_inherit" model="ir.ui.view">
+            <field name="name">view.sale.order.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="business_model" string="Business Model"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
